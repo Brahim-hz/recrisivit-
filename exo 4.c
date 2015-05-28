@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-void maxi(int a[],int n,int *i,int *max,int *cptt);
+void maxi(int a[],int n,int i,int *max);
 void remp(int a[50],int n);
 void prin(int a[],int n);
 int main()
@@ -13,7 +13,7 @@ int main()
     cpt++;
     max=a[0];
     i=0;
-    maxi(a,n,&i,&max,&cptt);
+    maxi(a,n,i,&max);
     printf("\n le %d",max);
 
 
@@ -32,27 +32,23 @@ void prin(int a[],int n)
     printf("\n %d",a[i]);
 
 }
-void maxi(int a[],int n,int *i,int *max,int *cptt){
+void maxi(int a[],int n,int i,int *max){
 
-if(*i==n-1){
-    *max=a[*i];
-    *cptt=2;
-    printf("\n le i %d",i);
+if(i==n-1){
+    return ;
 }
 
 else{
-        if((*cptt)!=2)
-        maxi(a,n,*i+1,max,cptt);
+
+    if(a[i]>(*max))
+        {
+            (*max)=a[i];
+        maxi(a,n,i+1,&(*max));
+        }
     else
-    if(a[*i]>(*max))
-        (*max)=a[*i];
-        *i--;
-        printf("\n le max : %d ",(*max));
+    {
+        maxi(a,n,i+1,&(*max));
+    }
 }
-
-
-}
-
-
 
 
